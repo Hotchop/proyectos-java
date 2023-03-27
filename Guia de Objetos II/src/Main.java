@@ -1,4 +1,6 @@
 import web.hotchop.modelos.*;
+import web.hotchop.modelos.banco.Cliente;
+import web.hotchop.modelos.banco.Cuenta;
 
 import javax.swing.*;
 import java.time.LocalDate;
@@ -34,6 +36,25 @@ public class Main {
         System.out.println(fac1.toString());*/
 
         /**Punto 3**/
-
+        Cliente nico = new Cliente(UUID.randomUUID(),"Nicolas Miranda","M");
+        System.out.println(nico.toString());
+        Cuenta cuenta1 = new Cuenta(UUID.randomUUID(),10000d,nico);
+        Scanner sr = new Scanner(System.in);
+        cuenta1.deposito(sr.nextDouble());
+        cuenta1.deposito(sr.nextDouble());
+        cuenta1.deposito(sr.nextDouble());
+        cuenta1.deposito(sr.nextDouble());
+        cuenta1.deposito(sr.nextDouble());
+        cuenta1.deposito(sr.nextDouble());
+        cuenta1.extraccion(sr.nextDouble());
+        cuenta1.extraccion(sr.nextDouble());
+        cuenta1.extraccion(sr.nextDouble());
+        cuenta1.extraccion(sr.nextDouble());
+        cuenta1.extraccion(sr.nextDouble());
+        cuenta1.extraccion(sr.nextDouble());
+        cuenta1.extraccion(sr.nextDouble());
+        cuenta1.extraccion(sr.nextDouble());
+        cuenta1.printReg();
+        System.out.println(cuenta1.toString());
     }
 }

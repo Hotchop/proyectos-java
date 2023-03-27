@@ -1,15 +1,13 @@
 package web.hotchop.modelos.banco;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
-public class Cuenta {
+public class CuentaDeudora {
     private UUID id;
     private Double balance = 0d;
     private Cliente cliente;
-    private ArrayList<String> registro = new ArrayList<>();
 
-    public Cuenta(UUID id, Double balance, Cliente cliente) {
+    public CuentaDeudora(UUID id, Double balance, Cliente cliente) {
         this.id = id;
         this.balance = balance;
         this.cliente = cliente;
@@ -50,32 +48,16 @@ public class Cuenta {
 
     public String deposito(Double ingreso){
         balance += ingreso;
-        registrar("El cliente "+ cliente.getNombre()+" deposito $"+ingreso);
         return "Se depositaron $"+ingreso+"\nBalance actual: $"+balance;
     }
 
     public String extraccion(Double egreso){
-        if(balance - egreso < 0){
-            return "No se puede retirar. Saldo insuficiente";
+        if(balance - egreso < -2000){
+            return "Saldo insuficiente, no se a completado la operacion.\nBalance actual: $"+balance;
         }
         else{
             balance -= egreso;
-            registrar("El cliente "+ cliente.getNombre()+" retiro $"+egreso);
             return "Se retiraron $"+egreso+"\nBalance actual: $"+balance;
-        }
-    }
-
-    public void registrar(String reg){
-        if(registro.size()==10) {
-            registro.remove(0);
-        }
-        registro.add(reg);
-    }
-
-    public void printReg(){
-        System.out.println("Ultimos 10 movimientos");
-        for (String i:registro) {
-            System.out.println(i);
         }
     }
 }
