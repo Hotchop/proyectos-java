@@ -2,17 +2,17 @@ package web.hotchop.modelos;
 
 import java.util.UUID;
 
-public class Cliente {
+public class ItemVenta {
     private UUID id;
     private String nombre;
-    private String email;
-    private Float descuento;
+    private String descrip;
+    private Float precio;
 
-    public Cliente(UUID id, String nombre, String email, Float descuento) {
+    public ItemVenta(UUID id, String nombre, String descrip, Float precio) {
         this.id = id;
         this.nombre = nombre;
-        this.email = email;
-        this.descuento = descuento;
+        this.descrip = descrip;
+        this.precio = precio;
     }
 
     public UUID getId() {
@@ -31,28 +31,28 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescrip() {
+        return descrip;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescrip(String descrip) {
+        this.descrip = descrip;
     }
 
-    public Float getDescuento() {
-        return descuento;
+    public Float getPrecio() {
+        return precio;
     }
 
-    public void setDescuento(Float descuento) {
-        this.descuento = descuento;
+    public void setPrecio(Float precio) {
+        this.precio = precio;
     }
 
     @Override
     public String toString() {
         return "Cliente[id="+id+
                 ", nombre="+nombre+
-                ", email="+email+
-                ", descuento="+ descuento+
+                ", descripcion="+descrip+
+                ", precio="+ precio+
                 "]";
     }
 }

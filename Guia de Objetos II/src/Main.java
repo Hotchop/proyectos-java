@@ -1,7 +1,10 @@
-import web.hotchop.modelos.Autor;
-import web.hotchop.modelos.Libro;
+import web.hotchop.modelos.*;
 
+import javax.swing.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,6 +21,19 @@ public class Main {
         System.out.println(java.mensaje());*/
 
         /**Punto 2**/
+        /*Cliente nico = new Cliente(UUID.randomUUID(),"Nicolas Miranda","mirandanic1996@gmail.com",20f);
+        System.out.println(nico.toString());
+        ArrayList<ItemVenta> carrito = new ArrayList<>();
+        carrito.add(new ItemVenta(UUID.randomUUID(),"Hollow Knight","Metroidvania",1600f));
+        carrito.add(new ItemVenta(UUID.randomUUID(),"Nier Replicant","Action RPG",3000f));
+        carrito.add(new ItemVenta(UUID.randomUUID(),"Subnautica","Adventure",1600f));
+        carrito.add(new ItemVenta(UUID.randomUUID(),"Slay the Spire","Deckbuilding",800f));
+        Factura fac1 = new Factura(UUID.randomUUID(),carrito,LocalDate.now(),nico);
+        fac1.montoTotal(carrito);
+        System.out.println(fac1.montos());
+        System.out.println(fac1.toString());*/
+
+        /**Punto 3**/
 
     }
 }
