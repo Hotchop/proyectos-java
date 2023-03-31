@@ -38,4 +38,11 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public void ultimosAlquileres(Ticket tk){
+        if(listaAlquileres.size() == 10) {
+            listaAlquileres.remove(0);
+        }
+        listaAlquileres.add(tk);
+    }
 }
