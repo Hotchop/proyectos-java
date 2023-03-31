@@ -1,10 +1,12 @@
 package web.hotchop.modelos;
 
 import java.time.LocalDate;
+import java.time.Year;
 
 public class Pelicula {
     private String titulo;
-    private LocalDate lanzamiento;
+    private String genero;
+    private Year lanzamiento;
     private Integer duracionMin;
     private String clasificacion;
     private String siglasPais;
@@ -12,9 +14,10 @@ public class Pelicula {
     private Integer stock = 0;
     private Integer alquileresTotales = 0;
 
-    public Pelicula(String titulo, LocalDate lanzamiento, Integer duracionMin, String clasificacion, String siglasPais,
+    public Pelicula(String titulo,String genero, Year lanzamiento, Integer duracionMin, String clasificacion, String siglasPais,
                     String descripcion) {
         this.titulo = titulo;
+        this.genero = genero;
         this.lanzamiento = lanzamiento;
         this.duracionMin = duracionMin;
         this.clasificacion = clasificacion;
@@ -31,11 +34,19 @@ public class Pelicula {
         this.titulo = titulo;
     }
 
-    public LocalDate getLanzamiento() {
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public Year getLanzamiento() {
         return lanzamiento;
     }
 
-    public void setLanzamiento(LocalDate lanzamiento) {
+    public void setLanzamiento(Year lanzamiento) {
         this.lanzamiento = lanzamiento;
     }
 
@@ -86,4 +97,5 @@ public class Pelicula {
     public void setAlquileresTotales(Integer alquileresTotales) {
         this.alquileresTotales = alquileresTotales;
     }
+
 }
