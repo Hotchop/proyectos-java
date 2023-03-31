@@ -1,10 +1,15 @@
 package web.hotchop.models.punto1;
 
+import java.text.DecimalFormat;
+
 public class Circulo {
-    private Double radio = 1.0d;
-    private String color = "rojo";
+    private Double radio;
+    private String color;
+    private DecimalFormat dFormat = new DecimalFormat("#.00");
 
     public Circulo() {
+        this.radio = 1.0d;
+        this.color = "rojo";
     }
 
     public Circulo(Double radio, String color) {
@@ -32,7 +37,7 @@ public class Circulo {
     public String toString() {
         return "Circulo{" +
                 "radio=" + radio +
-                ", color='" + color + '\'' +
+                ", color='" + color + '\''+
                 '}';
     }
 
