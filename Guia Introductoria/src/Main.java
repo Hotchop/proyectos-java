@@ -98,13 +98,13 @@ public class Main {
         */
 
         /**Punto 10**/
-        /*float F = 0f;
+        float F = 0f;
         float C;
         Scanner sr = new Scanner(System.in);
         System.out.println("Ingrese temperatura en Fahrenheit");
         F = sr.nextFloat();
         C = (F-32)*5/9;
-        System.out.println("Equivalente en Celcius = " + C);*/
+        System.out.println("Equivalente en Celcius = " + C);
 
         /**Punto 11**/
         /*float radio = 0f;
@@ -180,7 +180,7 @@ public class Main {
         System.out.println(num);*/
 
         /**Punto 18**/
-        Scanner sr = new Scanner(System.in);
+        /*Scanner sr = new Scanner(System.in);
         System.out.println("Ingrese horas, minutos y segundos");
         Integer H = sr.nextInt();
         Integer M = sr.nextInt();
@@ -190,7 +190,7 @@ public class Main {
         }
         else{
             System.out.println("La hora es incorrecta");
-        }
+        }*/
 
     }//fin metodo main
 

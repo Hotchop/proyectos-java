@@ -48,9 +48,10 @@ public class Ticket {
         this.devolucion = devolucion;
     }
 
+
     @Override
     public String toString() {
-        return "*****CUBEBUSTER*****\nFACTURA DE RETIRO\n"+cliente.getNombre()+"\n"+cliente.getTelefono()+"\n"+cliente.getDireccion()+"\n"+"\nPelicula:"+pelicula.getTitulo()+
-                "\nFecha de Retiro: "+retiro+"\nFecha de Devolucion: "+devolucion+"\n\n***GRACIAS POR ALQUILAR CON NOSOTROS***";
+        return cliente.getNombre()+"\n"+cliente.getTelefono()+"\n"+cliente.getDireccion()+"\n"+"Pelicula:"+pelicula.getTitulo()+
+                "\nFecha de Retiro: "+retiro+"\nFecha de Devolucion: "+devolucion;
     }
 }

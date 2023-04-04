@@ -1,16 +1,16 @@
 package web.hotchop.modelos;
 
 import javax.swing.*;
+import java.time.LocalDate;
 import java.time.Year;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Sistema {
     ArrayList<Pelicula> listadoPeliculas = new ArrayList<>();
     ArrayList<Cliente> listadoClientes = new ArrayList<>();
     ArrayList<Ticket> listadoAlquileres = new ArrayList<>();
     public void test(){
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println("listadoPeliculas.size() = " + listadoPeliculas.size());
             cargaPelicula();
         }
@@ -34,11 +34,11 @@ public class Sistema {
                     break;
                 case "B":devolucion();
                     break;
-                case "C":
+                case "C":vigentes();
                     break;
-                case "D":
+                case "D":venceHoy();
                     break;
-                case "E":
+                case "E":ultimosAlquileres();
                     break;
                 case "F":
                     break;
@@ -55,7 +55,7 @@ public class Sistema {
         Scanner sr = new Scanner(System.in);
         System.out.println("Ingrese Genero de la Pelicula");
         String genero = sr.nextLine();
-        System.out.println("Ingrese Estreno de la Pelicula (año-mes-dia)");
+        System.out.println("Ingrese Año de Estreno de la Pelicula");
         Year year = Year.parse(sr.nextLine());
         System.out.println("Ingrese Duracion en Minutos de la Pelicula");
         Integer duracion = Integer.parseInt(sr.nextLine());
@@ -127,14 +127,14 @@ public class Sistema {
                 Ticket tk = new Ticket(client,aux);
                 client.ultimosAlquileres(tk);
                 listadoAlquileres.add(tk);
-                JOptionPane.showConfirmDialog(null,tk.toString());
+                JOptionPane.showMessageDialog(null,"*****CUBEBUSTER*****\nFACTURA DE RETIRO\n"+tk.toString()+"\n\n***GRACIAS POR ALQUILAR CON NOSOTROS***");
             }
             else{
-                JOptionPane.showConfirmDialog(null,"La pelicula no se encuentra en stock");
+                JOptionPane.showMessageDialog(null,"La pelicula no se encuentra en stock");
             }
         }
         else{
-            JOptionPane.showConfirmDialog(null,"Pelicula no encontrada");
+            JOptionPane.showMessageDialog(null,"Pelicula no encontrada");
         }
 
     }
@@ -142,7 +142,7 @@ public class Sistema {
         String titulo = JOptionPane.showInputDialog(null,"Ingrese nombre de pelicula devuelta");
         String nombre = JOptionPane.showInputDialog(null,"Ingrese nombre del cliente");
         int i = 0;
-        while(i < listadoAlquileres.size() && (listadoAlquileres.get(i).getCliente().getNombre().compareTo(nombre) !=0 && listadoAlquileres.get(i).getPelicula().getTitulo().compareTo(titulo) != 0)){
+        while(i < listadoAlquileres.size() && (listadoAlquileres.get(i).getCliente().getNombre().compareTo(nombre) !=0 || listadoAlquileres.get(i).getPelicula().getTitulo().compareTo(titulo) != 0)){
             i++;
         }
         if(i < listadoAlquileres.size()){
@@ -153,5 +153,37 @@ public class Sistema {
         else{
             JOptionPane.showMessageDialog(null,"No se encuentra un alquiler correspondiente");
         }
+    }
+    public void vigentes(){     ///Emprolijar
+        JOptionPane.showMessageDialog(null,listadoAlquileres.toString());
+    }
+    public void venceHoy(){
+        if(!listadoAlquileres.isEmpty()){
+            String text = "Lista de alquieres que vencen hoy: ";
+            int i = 0;
+            while(i < listadoAlquileres.size()){
+                if(listadoAlquileres.get(i).getDevolucion() == LocalDate.now()){
+                    text = String.join("\n",listadoAlquileres.get(i).toString());
+                }
+                i++;
+            }
+            JOptionPane.showMessageDialog(null,text);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"No hay alquileres pendientes");
+        }
+    }
+    public void ultimosAlquileres(){
+        String nombre = JOptionPane.showInputDialog(null,"Ingrese nombre del cliente");
+        Cliente aux = buscaCliente(nombre);
+        if(aux != null){
+            JOptionPane.showMessageDialog(null,aux.toString());
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Cliente no Encontrado");
+        }
+    }
+    public void masAlquilados(){
+        ///Como compararlos
     }
 }

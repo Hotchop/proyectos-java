@@ -39,10 +39,27 @@ public class Cliente {
         this.direccion = direccion;
     }
 
+    public ArrayList<Ticket> getListaAlquileres() {
+        return listaAlquileres;
+    }
+
+    public void setListaAlquileres(ArrayList<Ticket> listaAlquileres) {
+        this.listaAlquileres = listaAlquileres;
+    }
+
     public void ultimosAlquileres(Ticket tk){
         if(listaAlquileres.size() == 10) {
             listaAlquileres.remove(0);
         }
         listaAlquileres.add(tk);
+    }
+
+    @Override
+    public String toString() {
+        String texto = new String("Lista de alquieres en orden de antiguedad:\n");
+        for (int i = listaAlquileres.size()-1; i > -1 ; i--) {
+            texto = String.join("\n",texto,"Pelicula: "+listaAlquileres.get(i).getPelicula().getTitulo()+" - Retiro: "+listaAlquileres.get(i).getRetiro());
+        }
+        return texto;
     }
 }
