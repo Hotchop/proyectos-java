@@ -1,5 +1,9 @@
 package web.hotchop.modelos;
 
+import web.hotchop.modelos.enums.Genero;
+import web.hotchop.modelos.enums.Pais;
+import web.hotchop.modelos.enums.Raiting;
+
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.Year;
@@ -9,12 +13,22 @@ public class Sistema {
     ArrayList<Pelicula> listadoPeliculas = new ArrayList<>();
     ArrayList<Cliente> listadoClientes = new ArrayList<>();
     ArrayList<Ticket> listadoAlquileres = new ArrayList<>();
-    public void test(){
-        for (int i = 0; i < 5; i++) {
-            System.out.println("listadoPeliculas.size() = " + listadoPeliculas.size());
-            cargaPelicula();
-        }
-
+    public void cargadatos(){
+        Pelicula pel1 = new Pelicula("Tron", Genero.Aventura,Year.of(1982),96, Raiting.PG, Pais.USA,
+                "Un hacker es secuestrado en el mundo digital y obligado a participar en juegos de " +
+                        "gladiadores donde la ayuda de un programa de seguridad heroico es su única oportunidad de escapar.");
+        Pelicula pel2 = new Pelicula("Iron Man",Genero.Accion,Year.of(2008),126,Raiting.PG13,Pais.USA,
+                "Tras de estar cautivo en una cueva afgana, el multimillonario ingeniero " +
+                "Tony Stark crea una armadura única para luchar contra el mal.");
+        Pelicula pel3 = new Pelicula("Star Wars",Genero.Aventura,Year.of(1997),121,Raiting.PG,Pais.USA,
+                "Luke Skywalker une sus fuerzas con un caballero jedi, un piloto fanfarrón, un wookiee y dos droides para salvar a la " +
+                        "galaxia de la estación espacial del Imperio, a la vez que intenta rescatar a la princesa Leia del malvado Darth Vader.");
+        pel1.setStock(7);
+        pel2.setStock(9);
+        pel3.setStock(5);
+        listadoPeliculas.add(pel1);
+        listadoPeliculas.add(pel2);
+        listadoPeliculas.add(pel3);
     }
     public void menu(){
         boolean check = true;
@@ -50,39 +64,6 @@ public class Sistema {
                     break;
             }
         }
-    }
-    public Pelicula datosPelicula(String titulo){
-        Scanner sr = new Scanner(System.in);
-        System.out.println("Ingrese Genero de la Pelicula");
-        String genero = sr.nextLine();
-        System.out.println("Ingrese Año de Estreno de la Pelicula");
-        Year year = Year.parse(sr.nextLine());
-        System.out.println("Ingrese Duracion en Minutos de la Pelicula");
-        Integer duracion = Integer.parseInt(sr.nextLine());
-        System.out.println("Ingrese Clasificacion de la Pelicula");
-        String clasificacion = sr.nextLine();
-        System.out.println("Ingrese Siglas del Pais de la Pelicula");
-        String siglas = sr.nextLine();
-        System.out.println("Ingrese Descripcion de la Pelicula");
-        String desc = sr.nextLine();
-        Pelicula aux = new Pelicula(titulo,genero,year,duracion,clasificacion,siglas,desc);
-        return aux;
-    }
-    public void cargaPelicula(){
-        Scanner sr = new Scanner(System.in);
-        System.out.println("Ingrese Titulo de la Pelicula");
-        String titulo = sr.nextLine();
-        Pelicula aux = buscaPelicula(titulo);
-        if(aux == null){
-            System.out.println("Nueva Pelicula");
-            aux = datosPelicula(titulo);
-            listadoPeliculas.add(aux);
-        }
-        else{
-            System.out.println("Aumentando Stock");
-            aux.setStock(aux.getStock()+1);
-        }
-
     }
     public Pelicula buscaPelicula(String titulo){
         int i = 0;
@@ -182,8 +163,5 @@ public class Sistema {
         else{
             JOptionPane.showMessageDialog(null,"Cliente no Encontrado");
         }
-    }
-    public void masAlquilados(){
-        ///Como compararlos
     }
 }

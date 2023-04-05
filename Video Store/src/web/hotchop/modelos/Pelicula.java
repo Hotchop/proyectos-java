@@ -1,20 +1,23 @@
 package web.hotchop.modelos;
 
-import java.time.LocalDate;
+import web.hotchop.modelos.enums.Genero;
+import web.hotchop.modelos.enums.Pais;
+import web.hotchop.modelos.enums.Raiting;
+
 import java.time.Year;
 
 public class Pelicula {
     private String titulo;
-    private String genero;
+    private Genero genero;
     private Year lanzamiento;
     private Integer duracionMin;
-    private String clasificacion;
-    private String siglasPais;
+    private Raiting clasificacion;
+    private Pais siglasPais;
     private String descripcion;
     private Integer stock = 0;
     private Integer alquileresTotales = 0;
 
-    public Pelicula(String titulo,String genero, Year lanzamiento, Integer duracionMin, String clasificacion, String siglasPais,
+    public Pelicula(String titulo,Genero genero, Year lanzamiento, Integer duracionMin, Raiting clasificacion, Pais siglasPais,
                     String descripcion) {
         this.titulo = titulo;
         this.genero = genero;
@@ -34,11 +37,11 @@ public class Pelicula {
         this.titulo = titulo;
     }
 
-    public String getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Genero genero) {
         this.genero = genero;
     }
 
@@ -58,19 +61,19 @@ public class Pelicula {
         this.duracionMin = duracionMin;
     }
 
-    public String getClasificacion() {
+    public Raiting getClasificacion() {
         return clasificacion;
     }
 
-    public void setClasificacion(String clasificacion) {
+    public void setClasificacion(Raiting clasificacion) {
         this.clasificacion = clasificacion;
     }
 
-    public String getSiglasPais() {
+    public Pais getSiglasPais() {
         return siglasPais;
     }
 
-    public void setSiglasPais(String siglasPais) {
+    public void setSiglasPais(Pais siglasPais) {
         this.siglasPais = siglasPais;
     }
 
