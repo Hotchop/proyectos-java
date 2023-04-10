@@ -6,7 +6,7 @@ import web.hotchop.modelos.enums.Raiting;
 
 import java.time.Year;
 
-public class Pelicula {
+public class Pelicula implements Comparable<Pelicula>{
     private String titulo;
     private Genero genero;
     private Year lanzamiento;
@@ -100,5 +100,20 @@ public class Pelicula {
     public void setAlquileresTotales(Integer alquileresTotales) {
         this.alquileresTotales = alquileresTotales;
     }
+    public int compareTo(Pelicula otraPelicula) {
+        return this.getAlquileresTotales() - otraPelicula.getAlquileresTotales();
+    }
 
+    @Override
+    public String toString() {
+        StringBuilder build = new StringBuilder();
+        build.append("Pelicula: "+ titulo)
+                .append("\n")
+                .append("Genero: "+genero)
+                .append("\n")
+                .append("Estreno: "+lanzamiento)
+                .append("\n")
+                .append("Alquileres: "+alquileresTotales);
+        return build.toString();
+    }
 }

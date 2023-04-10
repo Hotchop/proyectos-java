@@ -8,7 +8,7 @@ public class TDA {
     public void partido(){
         P1 = new Player();
         P2 = new Player();
-        JOptionPane.showInternalMessageDialog(null,"Nuevo Partido.\nIngrese Puntos [P1/P2]");
+        JOptionPane.showInternalMessageDialog(null,"Nuevo Partido.\nEscoja Puntos Jugador a Jugador");
         while(P1.getScore().compareTo("Winner") !=0 && P2.getScore().compareTo("Winner") !=0){
             String message;
             if(P1.getScore().compareTo("Deuce") == 0 && P2.getScore().compareTo("Deuce") == 0){
@@ -27,8 +27,9 @@ public class TDA {
                     }
                 }
             }
-            String punto = JOptionPane.showInputDialog(null,message);
-            switch (punto){
+            String[] opcion = {"P1","P2"};
+            int choise = JOptionPane.showInternalOptionDialog(null,message,"Elija Jugador",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE,null,opcion,opcion[0]);
+            switch (opcion[choise]){
                 case "P1":increase(P1,P2);
                     break;
                 case "P2":increase(P2,P1);

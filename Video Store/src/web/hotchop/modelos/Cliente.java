@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Cliente {
     private String nombre;
-    private Integer telefono;
+    private Long telefono;
     private String direccion;
     private ArrayList<Ticket> listaAlquileres;
 
-    public Cliente(String nombre, Integer telefono, String direccion) {
+    public Cliente(String nombre, Long telefono, String direccion) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
@@ -23,11 +23,11 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public Integer getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 

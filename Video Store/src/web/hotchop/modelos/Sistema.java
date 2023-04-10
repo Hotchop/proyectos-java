@@ -5,11 +5,12 @@ import web.hotchop.modelos.enums.Pais;
 import web.hotchop.modelos.enums.Raiting;
 
 import javax.swing.*;
+import java.text.CollationElementIterator;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.*;
 
-public class Sistema {
+public class Sistema{
     ArrayList<Pelicula> listadoPeliculas = new ArrayList<>();
     ArrayList<Cliente> listadoClientes = new ArrayList<>();
     ArrayList<Ticket> listadoAlquileres = new ArrayList<>();
@@ -23,7 +24,7 @@ public class Sistema {
         Pelicula pel3 = new Pelicula("Star Wars",Genero.Aventura,Year.of(1997),121,Raiting.PG,Pais.USA,
                 "Luke Skywalker une sus fuerzas con un caballero jedi, un piloto fanfarrón, un wookiee y dos droides para salvar a la " +
                         "galaxia de la estación espacial del Imperio, a la vez que intenta rescatar a la princesa Leia del malvado Darth Vader.");
-        pel1.setStock(7);
+        pel1.setStock(1);
         pel2.setStock(9);
         pel3.setStock(5);
         listadoPeliculas.add(pel1);
@@ -34,10 +35,10 @@ public class Sistema {
         boolean check = true;
         while(check == true){
             String opcion = JOptionPane.showInputDialog(null,"*****CUBEBUSTER STAFF MENU*****" +
-                    "\n----------------------------"+"\nSeleccione una opcion del menu para continuar:"+"\n[A] Retiro Pelicula" +
+                    "\nSeleccione una opcion del menu para continuar:"+"\n[A] Retiro Pelicula" +
                     "\n[B] Devolucion Pelicula" +
                     "\n[C] Alquileres Vigentes" +
-                    "\n[D] Devoluciones actuales" +
+                    "\n[D] Devoluciones por Fecha" +
                     "\n[E] Alquileres por Cliente" +
                     "\n[F] Peliculas Mas Alquiladas" +
                     "\n[G] Listado de Popularidad por Genero" +
@@ -50,15 +51,15 @@ public class Sistema {
                     break;
                 case "C":vigentes();
                     break;
-                case "D":venceHoy();
+                case "D":venceFecha();
                     break;
                 case "E":ultimosAlquileres();
                     break;
-                case "F":
+                case "F":popularidad();
                     break;
-                case "G":
+                case "G":popularPorGenero();
                     break;
-                case "H":
+                case "H":muestraPelicula();
                     break;
                 case "X": check = false;
                     break;
@@ -98,7 +99,7 @@ public class Sistema {
                 Cliente client = buscaCliente(nombre);
                 if(client == null){
                     String tel = JOptionPane.showInputDialog(null,"Nuevo cliente.\nIngrese telefono");
-                    Integer telNum = Integer.parseInt(tel);
+                    Long telNum = Long.parseLong(tel);
                     String dir = JOptionPane.showInputDialog(null,"Ingrese direccion");
                     client = new Cliente(nombre,telNum,dir);
                     listadoClientes.add(client);
@@ -136,19 +137,29 @@ public class Sistema {
         }
     }
     public void vigentes(){     ///Emprolijar
-        JOptionPane.showMessageDialog(null,listadoAlquileres.toString());
+        StringBuilder build = new StringBuilder();
+        build.append("Lista de alquileres activos\n");
+        for (int i = 0; i < listadoAlquileres.size(); i++) {
+            build.append(listadoAlquileres.get(i).toString())
+                    .append("\n------------------------\n");
+        }
+        JOptionPane.showMessageDialog(null,build.toString());
     }
-    public void venceHoy(){
+    public void venceFecha(){
         if(!listadoAlquileres.isEmpty()){
-            String text = "Lista de alquieres que vencen hoy: ";
+            String dateS = JOptionPane.showInputDialog(null,"Ingrese fecha (Formato: Año-Mes-Dia)");
+            LocalDate date = LocalDate.parse(dateS);
+            StringBuilder builder = new StringBuilder();
+            builder.append("Lista de alquieres que vencen el "+dateS+": \n");
             int i = 0;
             while(i < listadoAlquileres.size()){
-                if(listadoAlquileres.get(i).getDevolucion() == LocalDate.now()){
-                    text = String.join("\n",listadoAlquileres.get(i).toString());
+                if(listadoAlquileres.get(i).getDevolucion().isEqual(date)){
+                    builder.append(listadoAlquileres.get(i).toString())
+                            .append("\n------------------------\n");
                 }
                 i++;
             }
-            JOptionPane.showMessageDialog(null,text);
+            JOptionPane.showMessageDialog(null,builder.toString());
         }
         else{
             JOptionPane.showMessageDialog(null,"No hay alquileres pendientes");
@@ -162,6 +173,64 @@ public class Sistema {
         }
         else{
             JOptionPane.showMessageDialog(null,"Cliente no Encontrado");
+        }
+    }
+    public void popularidad(){
+        Collections.sort(listadoPeliculas,Collections.reverseOrder());
+        StringBuilder build = new StringBuilder();
+        build.append("Peliculas Más Populares:\n");
+        for (int i = 0; i < listadoPeliculas.size(); i++) {
+            build.append(listadoPeliculas.get(i).toString())
+                    .append("\n------------------------\n");
+        }
+        JOptionPane.showMessageDialog(null,build.toString());
+    }
+    public void popularPorGenero(){
+        Genero[] options = {Genero.Accion,Genero.Aventura,Genero.Comedia,Genero.Documental,Genero.Drama,Genero.Horror};
+        int choise = JOptionPane.showOptionDialog(null,"Elija Genero\n","Haga Click en una Opcion",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options,options[0]);
+        ArrayList<Pelicula> listaGenero = new ArrayList<>();
+        int i = 0;
+        while(i < listadoPeliculas.size()){
+            if(listadoPeliculas.get(i).getGenero().compareTo(options[choise]) == 0){
+                listaGenero.add(listadoPeliculas.get(i));
+            }
+            i++;
+        }
+        Collections.sort(listaGenero,Collections.reverseOrder());
+        StringBuilder build = new StringBuilder();
+        build.append("Peliculas Más Populares del Genero "+options[choise]+":\n");
+        for (i = 0; i < listaGenero.size(); i++) {
+            build.append(listaGenero.get(i).toString())
+                    .append("\n------------------------\n");
+        }
+        JOptionPane.showMessageDialog(null,build.toString());
+    }
+    public void muestraPelicula(){
+        String titulo = JOptionPane.showInputDialog(null,"Ingrese nombre de la pelicula");
+        Pelicula aux = buscaPelicula(titulo);
+        if(aux != null){
+            StringBuilder build = new StringBuilder();
+            build.append("Pelicula: "+aux.getTitulo())
+                    .append("\n")
+                    .append("Genero: "+aux.getGenero())
+                    .append("\n")
+                    .append("Estreno: "+aux.getLanzamiento())
+                    .append("\n")
+                    .append("Duracion: "+aux.getDuracionMin()+" minutos")
+                    .append("\n")
+                    .append("Clasificacion: "+aux.getClasificacion())
+                    .append("\n")
+                    .append("Pais: "+aux.getSiglasPais())
+                    .append("\n")
+                    .append("Descripcion: "+aux.getDescripcion())
+                    .append("\n")
+                    .append("Stock: "+aux.getStock())
+                    .append("\n")
+                    .append("Alquieres Totales: "+aux.getAlquileresTotales());
+            JOptionPane.showMessageDialog(null,build.toString());
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Pelicula no encontrada");
         }
     }
 }
