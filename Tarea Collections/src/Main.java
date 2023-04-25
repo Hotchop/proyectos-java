@@ -32,12 +32,18 @@ public class Main {
         listado.add(new Vuelo("LAT 405","Montevideo","Santigo",LocalDateTime.parse("30/08/2021 15:45",formatter),39));
 
         Collections.sort(listado);
-        System.out.println(Collections.max(listado));
+        System.out.println("...listado ordenado por fecha ascendente...");
+        System.out.println("El ultimo vuelo en llegar es "+Collections.max(listado).getNombre()+": "+Collections.max(listado).getOrigen()+", aterriza "+Collections.max(listado).getFechaLlegada().format(formatter));
         ListIterator<Vuelo> vueloListIterator = listado.listIterator();
-        int minPasajeros = 999;
+        int minPasajeros = Integer.MAX_VALUE;
+        Vuelo aux,minimo = null;
         while (vueloListIterator.hasNext()){
-            minPasajeros = Math.min(vueloListIterator.next().getCantidadPasajeros(),minPasajeros);
+            aux = vueloListIterator.next();
+            if(aux.getCantidadPasajeros() < minPasajeros){
+                minimo = aux;
+                minPasajeros = aux.getCantidadPasajeros();
+            }
         }
-        System.out.println("minPasajeros = " + minPasajeros);
+        System.out.println("El vuelo con el menor numero de pasajeros es "+minimo.getNombre()+": "+minimo.getOrigen()+", con "+minimo.getCantidadPasajeros()+" pasajeros");
     }
 }
