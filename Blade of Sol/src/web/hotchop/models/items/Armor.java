@@ -7,4 +7,12 @@ public class Armor extends Equipement{
         super(description);
         this.resistance = resistance;
     }
+
+    public int getResistance() {
+        return resistance;
+    }
+
+    public void setResistance(int resistance) {
+        this.resistance = resistance;
+    }
 }

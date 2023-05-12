@@ -28,6 +28,66 @@ public class Enemy implements Combat {
         this.messages = messages;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public int getHitChance() {
+        return hitChance;
+    }
+
+    public void setHitChance(int hitChance) {
+        this.hitChance = hitChance;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public EnemyStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EnemyStatus status) {
+        this.status = status;
+    }
+
+    public ArrayList<Item> getLoot() {
+        return loot;
+    }
+
+    public void setLoot(ArrayList<Item> loot) {
+        this.loot = loot;
+    }
+
+    public ArrayList<String> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(ArrayList<String> messages) {
+        this.messages = messages;
+    }
+
     public int getAttack() {
         return attack;
     }

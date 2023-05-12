@@ -1,5 +1,6 @@
 package web.hotchop.models;
 
+import web.hotchop.models.enums.PlayerStatus;
 import web.hotchop.models.interfaces.Combat;
 import web.hotchop.models.interfaces.Inventory;
 import web.hotchop.models.items.*;
@@ -15,6 +16,8 @@ public class Player implements Inventory, Combat {
     private Weapon weaponE;
     private Armor armorE;
     private ArrayList<Item> inventory;
+    private Room currentRoom;
+    private PlayerStatus status;
 
     public Player(Weapon weapon, Armor armor) {
         this.hp = MAX_HP;
@@ -23,6 +26,55 @@ public class Player implements Inventory, Combat {
         this.inventory = new ArrayList<>();
         inventory.add(weapon);
         inventory.add(armor);
+        this.status = PlayerStatus.FULL_HEALTH;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public Weapon getWeaponE() {
+        return weaponE;
+    }
+
+    public void setWeaponE(Weapon weaponE) {
+        this.weaponE = weaponE;
+    }
+
+    public Armor getArmorE() {
+        return armorE;
+    }
+
+    public void setArmorE(Armor armorE) {
+        this.armorE = armorE;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
+    public PlayerStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(PlayerStatus status) {
+        this.status = status;
     }
 
     @Override
@@ -85,6 +137,6 @@ public class Player implements Inventory, Combat {
 
     @Override
     public void die() {
-
+        setStatus(PlayerStatus.DEAD);
     }
 }

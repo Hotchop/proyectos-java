@@ -5,8 +5,8 @@ import web.hotchop.models.enums.Genero;
 import java.time.Year;
 import java.util.Scanner;
 
-public class Menu {
-    public void launch(){
+public abstract class Menu {
+    public static void launch(){
         Scanner sr = new Scanner(System.in);
         System.out.println("Desea un plan Premium? [Y/N]");
         String input = sr.nextLine();
@@ -17,7 +17,7 @@ public class Menu {
             basicMenu();
         }
     }
-    public void basicMenu(){
+    private static void basicMenu(){
         Scanner sr = new Scanner(System.in);
         System.out.println("Ingrese nombre de su lista");
         ListaBasica lista = new ListaBasica(sr.nextLine());
@@ -52,11 +52,11 @@ public class Menu {
         }
     }
 
-    public void premiumMenu(){
+    private static void premiumMenu(){
 
     }
 
-    public Cancion nuevaCancion(){
+    private static Cancion nuevaCancion(){
         Scanner sr = new Scanner(System.in);
         System.out.println("Ingrese nombre de artista, edad y nacionalidad");
         String nomArt = sr.nextLine();

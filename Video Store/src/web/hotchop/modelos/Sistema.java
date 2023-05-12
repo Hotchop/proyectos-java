@@ -6,6 +6,7 @@ import web.hotchop.modelos.enums.Raiting;
 
 import javax.swing.*;
 import java.text.CollationElementIterator;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.*;
@@ -147,19 +148,24 @@ public class Sistema{
     }
     public void venceFecha(){
         if(!listadoAlquileres.isEmpty()){
-            String dateS = JOptionPane.showInputDialog(null,"Ingrese fecha (Formato: Año-Mes-Dia)");
-            LocalDate date = LocalDate.parse(dateS);
-            StringBuilder builder = new StringBuilder();
-            builder.append("Lista de alquieres que vencen el "+dateS+": \n");
-            int i = 0;
-            while(i < listadoAlquileres.size()){
-                if(listadoAlquileres.get(i).getDevolucion().isEqual(date)){
-                    builder.append(listadoAlquileres.get(i).toString())
-                            .append("\n------------------------\n");
+            try{
+                String dateS = JOptionPane.showInputDialog(null,"Ingrese fecha (Formato: Año-Mes-Dia)");
+                LocalDate date = LocalDate.parse(dateS);
+                StringBuilder builder = new StringBuilder();
+                builder.append("Lista de alquieres que vencen el "+dateS+": \n");
+                int i = 0;
+                while(i < listadoAlquileres.size()){
+                    if(listadoAlquileres.get(i).getDevolucion().isEqual(date)){
+                        builder.append(listadoAlquileres.get(i).toString())
+                                .append("\n------------------------\n");
+                    }
+                    i++;
                 }
-                i++;
+                JOptionPane.showMessageDialog(null,builder.toString());
+            }catch (DateTimeException dateTimeException){
+                JOptionPane.showMessageDialog(null,"Fecha ingresada es incorrecta");
+                venceFecha();
             }
-            JOptionPane.showMessageDialog(null,builder.toString());
         }
         else{
             JOptionPane.showMessageDialog(null,"No hay alquileres pendientes");
