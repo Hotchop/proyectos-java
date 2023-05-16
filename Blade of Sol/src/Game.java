@@ -1,15 +1,16 @@
-package web.hotchop.models;
-
+import web.hotchop.models.Enemy;
+import web.hotchop.models.Player;
 import web.hotchop.models.enums.CombatOptions;
 import web.hotchop.models.enums.EnemyStatus;
 import web.hotchop.models.enums.PlayerStatus;
 
+import javax.swing.*;
 import java.util.Random;
 
-public abstract class System {
-    public static boolean encounter(Player player,Enemy enemy){
+public abstract class Game {
+    public static boolean encounter(Player player, Enemy enemy){
         Random rng = new Random();
-        CombatOptions choise = null;
+        CombatOptions choise;
         CombatOptions enemyChoise = null;
         CombatOptions[] options = CombatOptions.values();
         int defenseMod;
@@ -17,7 +18,9 @@ public abstract class System {
             defenseMod = 0;
             enemyChoise = options[rng.nextInt(options.length-1)];
             ///Crear intefaz de combate (botones de ataque, esquive, defensa, inventario)
-                ///Crear reaccion random enemigo (ataque, otros)
+            int choiseNum = JOptionPane.showOptionDialog(null,"You are engaged in combat with "+enemy.getName()+"\n-------------\nHP\n"+player.getHp()+"/"+ player.MAX_HP,"Blade of Sol",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options,options[0]);
+            choise = options[choiseNum];
+            ///Crear reaccion random enemigo (ataque, otros)
             switch (choise){
                 case ATTACK -> playerAttaking(player,enemy);
                 case DEFEND -> defenseMod = 2;

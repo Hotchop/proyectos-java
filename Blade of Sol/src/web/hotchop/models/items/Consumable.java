@@ -4,8 +4,8 @@ public class Consumable extends Item{
     private int heal;
     private boolean consumed;
 
-    public Consumable(String description, int heal) {
-        super(description);
+    public Consumable(String description, String nombre, int heal, boolean consumed) {
+        super(description, nombre);
         this.heal = heal;
         this.consumed = false;
     }

@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class Player implements Inventory, Combat {
     private int hp;
-    private static final int MAX_HP = 100;
+    public final int MAX_HP = 100;
     private Weapon weaponE;
     private Armor armorE;
     private ArrayList<Item> inventory;
@@ -25,7 +25,9 @@ public class Player implements Inventory, Combat {
         this.armorE = armor;
         this.inventory = new ArrayList<>();
         inventory.add(weapon);
+        this.weaponE.setEquiped(true);
         inventory.add(armor);
+        this.weaponE.setEquiped(true);
         this.status = PlayerStatus.FULL_HEALTH;
     }
 

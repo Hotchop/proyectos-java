@@ -3,8 +3,8 @@ package web.hotchop.models.items;
 public class Armor extends Equipement{
     private int resistance;
 
-    public Armor(String description, int resistance) {
-        super(description);
+    public Armor(String description, String nombre, int resistance) {
+        super(description, nombre);
         this.resistance = resistance;
     }
 

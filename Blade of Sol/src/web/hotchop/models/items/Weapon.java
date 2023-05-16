@@ -4,8 +4,8 @@ public class Weapon extends Equipement{
     private int damage;
     private int hitModifier;
 
-    public Weapon(String description, int damage, int hitModifier) {
-        super(description);
+    public Weapon(String description, String nombre, int damage, int hitModifier) {
+        super(description, nombre);
         this.damage = damage;
         this.hitModifier = hitModifier;
     }

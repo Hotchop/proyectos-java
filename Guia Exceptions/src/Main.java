@@ -18,12 +18,12 @@ public class Main {
         ///Los programas solo envian 3, ya que el final siempre se ejecuta, y es el ultimo return en tomarse*/
 
         /**Punto 3**/
-        /*Random random = new Random();
+        Random random = new Random();
         int num = random.nextInt(501);
-        EjemploExepciones.adivina(num);*/
+        EjemploExepciones.adivina(num);
 
         /**Punto 4**/
-        Colegio colegio = new Colegio();
+        /*Colegio colegio = new Colegio();
         Alumno alum1 = new Alumno();
         Alumno alum2 = new Alumno();
         Alumno alum3 = new Alumno();
@@ -45,7 +45,7 @@ public class Main {
         Collections.sort(colegio.listado);
         colegio.verNacionalidad("Argentina");
         colegio.cuantos();
-        colegio.verTodo();
+        colegio.verTodo();*/
 
     }
 }
