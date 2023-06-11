@@ -18,9 +18,9 @@ public class Main {
         ///Los programas solo envian 3, ya que el final siempre se ejecuta, y es el ultimo return en tomarse*/
 
         /**Punto 3**/
-        Random random = new Random();
+        /*Random random = new Random();
         int num = random.nextInt(501);
-        EjemploExepciones.adivina(num);
+        EjemploExepciones.adivina(num);*/
 
         /**Punto 4**/
         /*Colegio colegio = new Colegio();
@@ -46,6 +46,9 @@ public class Main {
         colegio.verNacionalidad("Argentina");
         colegio.cuantos();
         colegio.verTodo();*/
+
+        /**Practico de Exceptions**/
+
 
     }
 }
