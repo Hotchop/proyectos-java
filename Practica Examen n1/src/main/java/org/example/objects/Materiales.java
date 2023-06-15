@@ -2,12 +2,12 @@ package org.example.objects;
 
 import java.time.Year;
 
-public abstract class Materiales implements Comparable{
+public abstract class Materiales{
     private String titulo;
     private String autor;
-    private Year añoPublicacion;
+    private int añoPublicacion;
 
-    public Materiales(String titulo, String autor, Year añoPublicacion) {
+    public Materiales(String titulo, String autor, int añoPublicacion) {
         this.titulo = titulo;
         this.autor = autor;
         this.añoPublicacion = añoPublicacion;
@@ -29,19 +29,20 @@ public abstract class Materiales implements Comparable{
         this.autor = autor;
     }
 
-    public Year getAñoPublicacion() {
+    public int getAñoPublicacion() {
         return añoPublicacion;
     }
 
-    public void setAñoPublicacion(Year añoPublicacion) {
+    public void setAñoPublicacion(int añoPublicacion) {
         this.añoPublicacion = añoPublicacion;
     }
 
     @Override
-    public int compareTo(Materiales o) {
-        if(this.getTitulo() == null){
-            return 0;
-        }
-        return this.getTitulo().compareTo(o.getTitulo());
+    public String toString() {
+        return "Materiales{" +
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", añoPublicacion=" + añoPublicacion +
+                '}';
     }
 }

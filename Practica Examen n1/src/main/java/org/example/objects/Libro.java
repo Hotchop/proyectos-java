@@ -10,7 +10,7 @@ public class Libro extends Materiales implements Intercambio {
     private boolean disponibilidad;
     private boolean prestado;
 
-    public Libro(String titulo, String autor, Year añoPublicacion, int paginas, boolean disponibilidad, boolean prestado) {
+    public Libro(String titulo, String autor, int añoPublicacion, int paginas, boolean disponibilidad, boolean prestado) {
         super(titulo, autor, añoPublicacion);
         this.paginas = paginas;
         this.disponibilidad = disponibilidad;
@@ -59,6 +59,15 @@ public class Libro extends Materiales implements Intercambio {
     }
 
     @Override
+    public String toString() {
+        return "Libro{" +
+                "paginas=" + paginas +
+                ", disponibilidad=" + disponibilidad +
+                ", prestado=" + prestado +
+                '}';
+    }
+
+    @Override
     public void devolver() {
         try {
             if(prestado == false){
@@ -69,5 +78,7 @@ public class Libro extends Materiales implements Intercambio {
         }catch (Error_Intercambio ei){
             System.out.println(ei.getMessage());
         }
+
+
     }
 }

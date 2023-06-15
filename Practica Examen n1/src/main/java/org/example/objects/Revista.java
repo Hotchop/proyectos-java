@@ -10,7 +10,7 @@ public class Revista extends Materiales implements Intercambio {
     private boolean subscripcion;
     private boolean prestado;
 
-    public Revista(String titulo, String autor, Year añoPublicacion, int edicion, boolean subscripcion, boolean prestado) {
+    public Revista(String titulo, String autor, int añoPublicacion, int edicion, boolean subscripcion, boolean prestado) {
         super(titulo, autor, añoPublicacion);
         this.edicion = edicion;
         this.subscripcion = subscripcion;
@@ -56,6 +56,15 @@ public class Revista extends Materiales implements Intercambio {
     }
 
     @Override
+    public String toString() {
+        return "Revista{" +
+                "edicion=" + edicion +
+                ", subscripcion=" + subscripcion +
+                ", prestado=" + prestado +
+                '}';
+    }
+
+    @Override
     public void devolver() {
         try {
             if(prestado == false){
@@ -66,5 +75,7 @@ public class Revista extends Materiales implements Intercambio {
         }catch (Error_Intercambio ei){
             System.out.println(ei.getMessage());
         }
+
+
     }
 }

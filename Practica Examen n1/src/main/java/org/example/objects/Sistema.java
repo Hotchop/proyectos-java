@@ -10,17 +10,33 @@ public class Sistema <T>{
         this.biblioteca = new ArrayList<T>();
     }
 
-    private void agregar(T material){
+    public Collection<T> getBiblioteca() {
+        return biblioteca;
+    }
+
+    public void agregar(T material){
         biblioteca.add(material);
     }
-    private <T extends Comparable> void buscar(T material){
+    public boolean buscar(T material){
+        return (biblioteca.contains(material));
+    }
+    public void eliminar(T material){
         try {
-
+            if(buscar(material)){
+                biblioteca.remove(material);
+                System.out.println("Libro eliminado con exito");
+            }else{
+                throw new RuntimeException("Libro no encontrado");
+            }
         }catch (RuntimeException re){
             System.out.println(re.getMessage());
         }
     }
-    private void eliminar(){
 
+    @Override
+    public String toString() {
+        return "Sistema{" +
+                "biblioteca=" + biblioteca +
+                '}';
     }
 }
