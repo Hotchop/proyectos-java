@@ -1,1 +1,1 @@
-[]
+[{"titulo":"Harry Potter","autor":"JK","añoPublicacion":1996,"paginas":500,"disponibilidad":true,"prestado":false},{"titulo":"Hola","autor":"Juan","añoPublicacion":2023,"edicion":10,"subscripcion":true,"prestado":false},{"titulo":"Gente","autor":"Paula","añoPublicacion":2023,"edicion":5,"subscripcion":true,"prestado":true},{"titulo":"Harry Potter 3","autor":"JK","añoPublicacion":1998,"paginas":500,"disponibilidad":true,"prestado":false},{"titulo":"Harry Potter 2","autor":"JK","añoPublicacion":1997,"paginas":500,"disponibilidad":true,"prestado":false}]

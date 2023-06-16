@@ -2,13 +2,12 @@ package org.example;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.objects.Libro;
-import org.example.objects.Materiales;
-import org.example.objects.Revista;
-import org.example.objects.Sistema;
+import org.example.objects.*;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,6 +18,7 @@ public class Main {
         Libro lib3 = new Libro("Harry Potter 3","JK",1998,500,true,false);
         Revista rev1 = new Revista("Hola","Juan",2023,10,true,false);
         Revista rev2 = new Revista("Gente","Paula",2023,5,true,true);
+        Articulo art1 = new Articulo("Spiderman menace", "James Jonah Jameson Jr.", 2023, "He is.");
 
         lib1.devolver();
 
