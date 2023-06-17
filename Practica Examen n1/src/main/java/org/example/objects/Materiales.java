@@ -2,10 +2,13 @@ package org.example.objects;
 
 import java.time.Year;
 
-public abstract class Materiales{
+public class Materiales{
     private String titulo;
     private String autor;
     private int añoPublicacion;
+
+    public Materiales() {
+    }
 
     public Materiales(String titulo, String autor, int añoPublicacion) {
         this.titulo = titulo;

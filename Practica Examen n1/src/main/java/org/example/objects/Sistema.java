@@ -14,6 +14,10 @@ public class Sistema <T>{
         return biblioteca;
     }
 
+    public void setBiblioteca(Collection<T> biblioteca) {
+        this.biblioteca = biblioteca;
+    }
+
     public void agregar(T material){
         biblioteca.add(material);
     }
